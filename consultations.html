@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+<body>
+<center><h1>Consultations</h1>
+<h2>Demandes : </h2>
+</center>
+
+<center>
+<button id='accept' onclick="clicAccepter()">Accepter client</button>
+<button id='refuser' onclick="clicRefuser()">Refuser client</button>
+<button id='clientPrisCharge' onclick="clientPrisEnCharge()" disabled=true>Client pris en charge</button>
+<span id="chargeClient" class="chargeClient" style='visibility:hidden'>Ok</span>
+
+</center>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Infos')" id="defaultOpen">Infos</button>
+  <button class="tablinks" onclick="openTab(event, 'Predictions')">Predictions</button>
+
+</div>
+
+<div id="Infos" class="tabcontent">
+	<center>
+  <h3>Mettre ici le conteneur client</h3>
+  <p>blablabla.</p>
+  	</center>
+</div>
+
+<div id="Predictions" class="tabcontent">
+  <center>
+  <h3>Mettre ici l'interface avec l'API de prédictions</h3>
+
+<input type="text" id="pred1" value="4">
+<input type="text" id="pred2" value="4">
+<input type="text" id="pred3" value="4">
+<button id='generatePrediction' onclick="generatePrediction()">Générer une prédiction</button>
+</center>
+
+
+</div>
+
+<center>
+<input type="text" id="commentaireClient" value="Commentaire client">
+
+<button id='finishSession' onclick="document.getElementById('commentaireClient').value = ''">Finir la session et envoyer le commentaire</button>
+
+<p>
+<a href="dashboard.html">Retour vers le tableau de bord</a>
+</p>
+</center>
+
+
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+function clicAccepter(){
+
+document.getElementById('refuser').disabled = true;
+document.getElementById('accept').disabled = true;
+document.getElementById('clientPrisCharge').disabled = false;
+}
+function clicRefuser(){
+
+document.getElementById('refuser').disabled = true;
+document.getElementById('accept').disabled = true;
+document.getElementById('clientPrisCharge').disabled = true;
+}
+
+function generatePrediction(){
+}
+
+function clientPrisEnCharge(){
+document.getElementById('chargeClient').style.visibility = 'visible';
+document.getElementById('clientPrisCharge').disabled = true;
+
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+</body>
+</html> 
