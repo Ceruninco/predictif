@@ -2,57 +2,48 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
 
-  div.listemedium { 
-                margin:5px; 
-                padding:2px; 
-                background-color: white; 
-                width: 900px; 
-                height: 500px; 
-                overflow: auto; 
-                text-align:justify; 
-            } 
-			
-.collapsible {
-  background-color: #777;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
+<link rel="stylesheet" href="css/profilclient.css" type="text/css"/>
 
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
-</style>
 </head>
 <body>
  
-  <center> <h1>Liste des mediums</h1> 
- <p>Type de medium : Spirite <input type="checkbox" id="spirite"  onclick="spiriteCheck()"> 
- Cartomancien <input type="checkbox" id="spiriteCheck"  onclick="cartoCheck()"> 
- Astrologue <input type="checkbox" id="spiriteCheck"  onclick="astroCheck()"> </p>
- 
- <p>Genre :   Homme <input id="homme" type="radio" checked="checked" name="radio"> Femme <input id ="femme" type="radio" name="radio"></p>
- <p>Nom : <input type="text" id="nomMedium" size="40" /> 
- <button onclick="applyFilters()" id="appliquerFiltres">Appliquer les filtres</button>
+ <h1>Profil client</h1> 
+ <p>
  </p>
+ 
+<div style="width: 500px; float:left; height:500px; background: rgb(0,0,139,0.8); margin:10px ; text-color: white ; color : white; padding-left : 30px ">
+<h2>Infos utilisateurs : </h2> 
+Nom : <label id="nom"></label>
+</br>
+Prénom :  <label id="prenom"></label>
+</br>
+Date de naissance :  <label id="dateNaissance"></label>
+</br>
+Adresse postale :  <label id="adressePostale"></label>
+</br>
+N° de téléphone :  <label id="numTelephone"></label>
+</br>
+Adresse mail :  <label id="adresseMail"></label>
+</br>
+Mot de passe :  <label id="password"></label>
+</br>
+<h2>Profil Astral : </h2>
+
+Signe du zodiaque :  <label id="signeZodiaque"></label>
+</br>
+Signe astrologique chinois :  <label id="signeAstro"></label>
+</br>
+Couleur porte-bonheur :  <label id="couleurPorte"></label>
+</br>
+Animal-totem :  <label id="animalTotem"></label>
 
 
+<p></p>
+<p></p>
+</div>
 
- <div class="listemedium">
+ <div class="listemedium" style="float:right;">
 <button type="button" class="collapsible"><center>Type : cartomancien  Nom : Aboubakar  Genre : Homme</center></button>
 <div class="content">
   <p>Présentation :</p>
@@ -125,55 +116,7 @@
   <p>Promotion :</p>
   <button type="button" >Choisir ce médium</button></p>
   </div>
-</center>
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
-  });
-}
-
-function spiriteCheck() {
-  var checkBox = document.getElementById("myCheck");
-  if (checkBox.checked == true){
-  // spirite checked
-  } else {
-   //spirite not checked
-  }
-}
-function spiriteCheck() {
-  var checkBox = document.getElementById("myCheck");
-  var text = document.getElementById("text");
-  if (checkBox.checked == true){
-    text.style.display = "block";
-  } else {
-     text.style.display = "none";
-  }
-}
-function spiriteCheck() {
-  var checkBox = document.getElementById("myCheck");
-  var text = document.getElementById("text");
-  if (checkBox.checked == true){
-    text.style.display = "block";
-  } else {
-     text.style.display = "none";
-  }
-}
-
-function applyFilters() {
-
-}
-</script>
-
-
+  
+<script type="text/javascript" src="js/profilclient.js"></script>
 </body>
 </html>
