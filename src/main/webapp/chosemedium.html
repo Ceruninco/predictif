@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+
+            .listemedium { 
+                margin:5px; 
+                padding:2px; 
+                background-color: white; 
+                width: 900px; 
+                height: 500px; 
+                overflow: auto; 
+                text-align:justify; 
+            } 
+
+            .collapsible {
+                background-color: #777;
+                color: white;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+            }
+
+            .active, .collapsible:hover {
+                background-color: #555;
+            }
+
+            .content {
+                padding: 0 18px;
+                display: none;
+                overflow: hidden;
+                background-color: #f1f1f1;
+            }
+        </style>
+    </head>
+    <body>
+
+    <center> <h1>Liste des mediums</h1> 
+
+        <p>Type de medium : Spirite <input type="checkbox" id="spirite"  onclick="spiriteCheck()"> 
+            Cartomancien <input type="checkbox" id="spiriteCheck"  onclick="cartoCheck()"> 
+            Astrologue <input type="checkbox" id="spiriteCheck"  onclick="astroCheck()"> </p>
+
+        <p>Genre :   Homme <input id="homme" type="radio" checked="checked" name="radio"> Femme <input id ="femme" type="radio" name="radio"></p>
+        <p>Nom : <input type="text" id="nomMedium" size="40" /> 
+            <button onclick="applyFilters()" id="appliquerFiltres">Appliquer les filtres</button>
+        </p>
+
+
+        <button id="bouton-loadmediums">Load mediums</button>
+
+
+        <ul id="listeMediums" class="listemedium">
+          
+        </ul>
+    </center>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+
+        function spiriteCheck() {
+            var checkBox = document.getElementById("myCheck");
+            if (checkBox.checked == true) {
+                // spirite checked
+            } else {
+                //spirite not checked
+            }
+        }
+        function spiriteCheck() {
+            var checkBox = document.getElementById("myCheck");
+            var text = document.getElementById("text");
+            if (checkBox.checked == true) {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
+            }
+        }
+        function spiriteCheck() {
+            var checkBox = document.getElementById("myCheck");
+            var text = document.getElementById("text");
+            if (checkBox.checked == true) {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
+            }
+        }
+
+        function applyFilters() {
+
+        }
+
+        function createContainers(JsonObject) {
+
+        }
+
+        $(document).ready(function () {
+            $('#bouton-loadmediums').on('click', function () { // Fonction appelée lors du clic sur le bouton
+
+                console.log("clic sur le bouton de loading"); // LOG dans Console Javascript
+                // Appel AJAX
+                $.ajax({
+                    url: './ActionServlet',
+                    method: 'GET',
+                    data: {
+                        todo: 'loadMediums'
+                    },
+                    dataType: 'json'
+                })
+                
+            
+                        .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                            console.log('Response', response); // LOG dans Console Javascript
+                            var mediums = response.listeMediums;
+                            $('#listeMediums').empty();
+                            $.each(mediums, function (index, medium) {
+                                 switch (medium.type) {
+                                        case 'MediumCartomancien':
+                                          console.log('MediumCartomancien');
+                                           $('#listeMediums').append(
+                                       '<li id="'+index+'">'+
+                                    '<button type="button" class="collapsible"><center>Type : '+medium.type+'  Nom :'+medium.nom+'  Genre : '+medium.genre+'</center></button>'+
+                                     '<div class="content" id ="content'+index+'">'+
+                                        '<p>Présentation :'+medium.presentation+'</p>'+
+                                        '<button type="button" >Choisir ce médium</button></p>'+
+                                      '</div>'+
+                                      '</li>'
+                                        );
+                                          break;
+                                        case 'MediumAstrologue':
+                                        console.log('MediumAstrologue');
+                                         $('#listeMediums').append(
+                                       '<li id="'+index+'">'+
+                                    '<button type="button" class="collapsible"><center>Type : '+medium.type+'  Nom :'+medium.nom+'  Genre : '+medium.genre+'</center></button>'+
+                                     '<div class="content" id ="content'+index+'">'+
+                                        '<p>Présentation :'+medium.presentation+'</p>'+
+                                        '<p>Formation :'+medium.formation+'</p>'+
+                                        '<p>Promotion :'+medium.promotion+'</p>'+
+                                        '<button type="button" >Choisir ce médium</button></p>'+
+                                      '</div>'+
+                                      '</li>'
+                                        );
+                                          break;
+                                        case 'MediumSpirite':
+                                          console.log('MediumSpirite');
+                                           $('#listeMediums').append(
+                                       '<li id="'+index+'">'+
+                                    '<button type="button" class="collapsible"><center>Type : '+medium.type+'  Nom :'+medium.nom+'  Genre : '+medium.genre+'</center></button>'+
+                                     '<div class="content" id ="content'+index+'">'+
+                                        '<p>Présentation :'+medium.presentation+'</p>'+
+                                        '<p>Support :'+medium.support+'</p>'+
+                                        '<button type="button" >Choisir ce médium</button></p>'+
+                                      '</div>'+
+                                      '</li>'
+                                        );
+                                          // expected output: "Mangoes and papayas are $2.79 a pound."
+                                          break;
+                                        default:
+                                      }
+                               
+                                document.getElementById(index).addEventListener("click", function () {
+                                    this.classList.toggle("active");
+                                    var content = document.getElementById("content"+index)
+                                    if (content.style.display === "block") {
+                                        content.style.display = "none";
+                                    } else {
+                                        content.style.display = "block";
+                                    }
+                                });
+                            }
+                            );
+
+
+
+                        })
+                        .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                            console.log('Error', error); // LOG dans Console Javascript
+                            alert("Erreur lors de l'appel AJAX" + error.status);
+                        })
+                        .always(function () { // Fonction toujours appelée
+
+                        });
+            });
+        });
+    </script>
+
+
+</body>
+</html>

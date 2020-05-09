@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Inscription</title>
+        <!-- Librairie Javascript: jQuery (v3.4.1) -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<style>
+		#champ-nom,#champ-prenom,#champ-civilite,#champ-naissance,#champ-adressepostale,#champ-numtelephone,#champ-adressemail,#password,#password-confirm {
+		
+		  display: flex;
+		 }
+		</style>
+    </head>
+    <body>
+		<center>
+        <h1>Inscription</h1>
+
+        <!-- Paragraphe avec id="notification" pour les messages de notification -->
+        <p id="notification">Veuillez saisir votre identifiant (adresse mail) et votre mot de passe.</p>
+        <p id="id"></p>
+        <p id="nom"></p>
+        <p id="prenom"></p>
+        <p id="mail"></p>
+        <!-- Champs et Bouton de Formulaire -->
+		
+		<div id= formulaire>
+        Nom : <input type="text" id="champ-nom" size="40" />
+        <br/>
+        Prénom : <input type="password" id="champ-prenom"size="40" />
+        <br/>
+		Civilité : <input type="text" id="champ-civilite" size="40" />
+        <br/>
+		Date de naissance : <input type="text" id="champ-naissance" size="40" />
+        <br/>
+		Adresse postale : <input type="text" id="champ-adressepostale" size="40" />
+        <br/>
+		Numéro de téléphone: <input type="text" id="champ-numtelephone" size="40" />
+        <br/>
+		Adresse mail : <input type="text" id="champ-adressemail" size="40" />
+        <br/>
+		Mot de passe : <input type="password" id="password" size="40" />
+        <br/>
+		Mot de passe (confirmation) : <input type="password" id="password-confirm" size="40" />
+        <br/>
+       
+	   
+        <button id="bouton-inscription">S'inscrire</button>
+		</div>
+       </center>
+
+       <script type="text/javascript" src="js/inscriptionclient.js"></script>
+    </body>
+</html>

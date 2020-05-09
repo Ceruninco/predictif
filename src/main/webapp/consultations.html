@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/consultations.css" type="text/css"/>
+
+
+</head>
+<body>
+<center><h1>Consultations</h1>
+<h2>Demandes : </h2>
+</center>
+
+<center>
+<button id='accept' onclick="clicAccepter()">Accepter client</button>
+<button id='refuser' onclick="clicRefuser()">Refuser client</button>
+<button id='clientPrisCharge' onclick="clientPrisEnCharge()" disabled=true>Client pris en charge</button>
+<span id="chargeClient" class="chargeClient" style='visibility:hidden'>Ok</span>
+
+</center>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Infos')" id="defaultOpen">Infos</button>
+  <button class="tablinks" onclick="openTab(event, 'Predictions')">Predictions</button>
+
+</div>
+
+<div id="Infos" class="tabcontent">
+	<center>
+  <h3>Mettre ici le conteneur client</h3>
+  <p>blablabla.</p>
+  	</center>
+</div>
+
+<div id="Predictions" class="tabcontent">
+  <center>
+  <h3>Mettre ici l'interface avec l'API de prédictions</h3>
+
+<input type="text" id="pred1" value="4">
+<input type="text" id="pred2" value="4">
+<input type="text" id="pred3" value="4">
+<button id='generatePrediction' onclick="generatePrediction()">Générer une prédiction</button>
+</center>
+
+
+</div>
+
+<center>
+<input type="text" id="commentaireClient" value="Commentaire client">
+
+<button id='finishSession' onclick="document.getElementById('commentaireClient').value = ''">Finir la session et envoyer le commentaire</button>
+
+<p>
+<a href="dashboard.html">Retour vers le tableau de bord</a>
+</p>
+</center>
+
+
+<script type="text/javascript" src="js/consultations.js"></script>
+
+   
+</body>
+</html> 

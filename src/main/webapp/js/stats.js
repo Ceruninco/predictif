@@ -1,0 +1,7 @@
+
+function chercherNombreMedium(){
+
+}
+
+function chercherNombreEmploye(){
+}
